@@ -1,8 +1,3 @@
-// draw = function () {
-//   fill(black);
-//   ellipse (200, 100, 200, 300);
-// };
-
 //constructor function to build out image objects
 var ImgData = function (src, title) {
   this.src = src;
@@ -72,3 +67,9 @@ var ImgData = function (src, title) {
 } //closes function
 
   window.addEventListener("load", showImages);
+
+  function drawEllipse() {
+    ellipseLoc = document.getElementById("ellipse")
+    fill(black);
+    drawellipse (100, 100, 200, 200);
+  }
