@@ -3,7 +3,7 @@ function drawRectangle(x) {
   var ctx = rectangleLoc.getContext('2d')
   ctx.rect(x, 5, 20, 120);
   ctx.stroke();
-  ctx.fill(black);
+  // ctx.fill(black);
 }
 
 //function that creates the object data
@@ -11,8 +11,8 @@ var ImgData = function (src, title) {
   this.src = src;
   this.title = title;
   this.label= title;
-  this.y = Math.floor(Math.random()*10);
   this.imageTotalVotes = 0;
+
   }
 
   //array of objects
@@ -88,16 +88,16 @@ var ImgData = function (src, title) {
   window.addEventListener("load", showImages);
 
 //function that builds the table that displays the results of the votes
-  function displayResults() {
-    for (var i = 0; i < imgObjects.length; i++) {
-      var el = document.getElementById("results-container");
-      var ul = document.createElement("ul");
-      var list = document.createElement("li");
-      list.innerText = imgObjects[i].title + "- " + imgObjects[i].imageTotalVotes;
-      ul.appendChild(list);
-      el.appendChild(ul);
-    }
-}
+//   function displayResults() {
+//     for (var i = 0; i < imgObjects.length; i++) {
+//       var el = document.getElementById("results-container");
+//       var ul = document.createElement("ul");
+//       var list = document.createElement("li");
+//       list.innerText = imgObjects[i].title + "- " + imgObjects[i].imageTotalVotes;
+//       ul.appendChild(list);
+//       el.appendChild(ul);
+//     }
+// }
 
   var reloadCounter = 0;
 //function to reload the images after the user votes
@@ -111,7 +111,7 @@ var ImgData = function (src, title) {
     } else {
       document.getElementById("image-container").innerHTML = "";
       document.getElementById("header-container").innerText = "Thanks for playing! Here are your results"
-      displayResults();
+      chartResults();
     }
   }, 300); //timeout delay
 } //closes imageReoad()
