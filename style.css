@@ -37,3 +37,12 @@ ul li {
   font-family: Garamond;
   color: green;
 }
+
+#rectangle {
+  border: solid blue;
+  border-width: 5px;
+  width: 410px;
+  height: 50px;
+  }
+/*width: 100px;
+height: 3000px;*/

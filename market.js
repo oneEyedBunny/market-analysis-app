@@ -1,37 +1,36 @@
-//constructor function to build out image objects
-// function drawEllipse() {
-//   var ellipseLoc = document.getElementById("ellipse")
-//   var ctx = ellipseLoc.getContext('2d')
-//   ctx.ellipse (100, 100, 200, 200);
-//   ctx.fill(black);
-// }
-// drawEllipse();
-// var header-container=document.getElementById("header-container");
-// var image-container = document.getElementById("image-container");
-// var results-container = document.getElementById("results-container");
+function drawRectangle(x) {
+  var rectangleLoc = document.getElementById("rectangle")
+  var ctx = rectangleLoc.getContext('2d')
+  ctx.rect(x, 5, 20, 120);
+  ctx.stroke();
+  ctx.fill(black);
+}
 
+//function that creates the object data
 var ImgData = function (src, title) {
   this.src = src;
   this.title = title;
+  this.label= title;
+  this.y = Math.floor(Math.random()*10);
   this.imageTotalVotes = 0;
   }
 
-  //array for objects
+  //array of objects
   var imgObjects = [];
-  imgObjects.push(new ImgData("bag.jpg", "bag"));
-  imgObjects.push(new ImgData("banana.jpg", "banana"));
-  imgObjects.push(new ImgData("boots.jpg", "boots"));
-  imgObjects.push(new ImgData("chair.jpg", "chair"));
-  imgObjects.push(new ImgData("cthulhu.jpg", "cthulhu"));
-  imgObjects.push(new ImgData("dragon.jpg", "dragon"));
-  imgObjects.push(new ImgData("pen.jpg", "pen"));
-  imgObjects.push(new ImgData("scissors.jpg", "scissors"));
-  imgObjects.push(new ImgData("shark.jpg", "shark"));
-  imgObjects.push(new ImgData("sweep.jpg", "sweep"));
-  imgObjects.push(new ImgData("unicorn.jpg", "unicorn"));
-  imgObjects.push(new ImgData("usb.jpg", "usb"));
-  imgObjects.push(new ImgData("water_can.jpg", "water_can"));
-  imgObjects.push(new ImgData("wine_glass.jpg", "wine_glass"));
+  imgObjects.push(new ImgData("images/bag.jpg", "bag"));
+  imgObjects.push(new ImgData("images/banana.jpg", "banana"));
+  imgObjects.push(new ImgData("images/boots.jpg", "boots"));
+  imgObjects.push(new ImgData("images/chair.jpg", "chair"));
+  imgObjects.push(new ImgData("images/cthulhu.jpg", "cthulhu"));
+  imgObjects.push(new ImgData("images/dragon.jpg", "dragon"));
+  imgObjects.push(new ImgData("images/pen.jpg", "pen"));
+  imgObjects.push(new ImgData("images/scissors.jpg", "scissors"));
+  imgObjects.push(new ImgData("images/shark.jpg", "shark"));
+  imgObjects.push(new ImgData("images/sweep.jpg", "sweep"));
+  imgObjects.push(new ImgData("images/unicorn.jpg", "unicorn"));
+  imgObjects.push(new ImgData("images/usb.jpg", "usb"));
+  imgObjects.push(new ImgData("images/water_can.jpg", "water can"));
+  imgObjects.push(new ImgData("images/wine_glass.jpg", "wine glass"));
 
   //function to add the images to the page
   function addImage(src, title) {
@@ -48,27 +47,33 @@ var ImgData = function (src, title) {
   //fucntion to randomly pic the image from the addImage array and ensure there are no duplicates
   function showImages() {
     document.getElementById("image-container").innerHTML = "";
-    var index1 = Math.floor(Math.random() * 14)
-    addImage("images/"+imgObjects[index1].src, imgObjects[index1].title); //"images" is for the folder where they're stored
-    var index2 = Math.floor(Math.random() * 14)
+    var index1 = Math.floor(Math.random() * imgObjects.length)
+    addImage(imgObjects[index1].src, imgObjects[index1].title); //"images" is for the folder where they're stored
+    var index2 = Math.floor(Math.random() * imgObjects.length)
     while (index2 == index1) {
-      index2 = Math.floor(Math.random() * 14);
+      index2 = Math.floor(Math.random() * imgObjects.length);
     }
-    addImage("images/"+imgObjects[index2].src, imgObjects[index2].title);
+    addImage(imgObjects[index2].src, imgObjects[index2].title);
 
-    var index3 = Math.floor(Math.random() * 14)
+    var index3 = Math.floor(Math.random() * imgObjects.length)
     while (index3 == index1 || index3 == index2) {
-      index3 = Math.floor(Math.random() * 14)
+      index3 = Math.floor(Math.random() * imgObjects.length)
     }
-    addImage("images/"+imgObjects[index3].src, imgObjects[index3].title);
+    addImage(imgObjects[index3].src, imgObjects[index3].title);
   }
 
+  var x = 5;
   //records the users vote
   function recordVote(event) {
     var clickedItemTitle = event.target.title; //this is the event object. target is a property within the event object and it gives info about what in HTML was clicked
     console.log(clickedItemTitle);
     var index = 0;
-    event.target.classList.add("onClick")
+        if(reloadCounter > 0){
+        drawRectangle(x+= 20);
+      }
+        else {drawRectangle(x);
+      }
+      event.target.classList.add("onClick")
     do {
       var imageClicked = imgObjects[index];
       if (clickedItemTitle == imageClicked.title) {
@@ -76,7 +81,7 @@ var ImgData = function (src, title) {
       } else {
         index ++
       } //closes if/else
-    }  while (clickedItemTitle != imageClicked.title);
+    }  while (clickedItemTitle != imageClicked.title && index < imgObjects.length);
     console.log(imageClicked.imageTotalVotes)
   } //closes function
 
@@ -97,6 +102,7 @@ var ImgData = function (src, title) {
   var reloadCounter = 0;
 //function to reload the images after the user votes
   function imageReload () {
+    document.getElementById("header-container")
     setTimeout (function (){
       if (reloadCounter < 14) {
       showImages(); //this also has the addImage() in it, and that has the recordVote(), so all are being called with this one
@@ -108,4 +114,4 @@ var ImgData = function (src, title) {
       displayResults();
     }
   }, 300); //timeout delay
-} //closes imageReload()
+} //closes imageReoad()
