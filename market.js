@@ -1,7 +1,8 @@
 function drawRectangle(x) {
   var rectangleLoc = document.getElementById("rectangle")
   var ctx = rectangleLoc.getContext('2d')
-  ctx.rect(x, 5, 20, 120);
+  ctx.fillStyle =  'rgba(0, 0, 200, 0.5)';
+  ctx.fillRect(x, 5, 20, 120);
   ctx.stroke();
   // ctx.fill(black);
 }
@@ -86,18 +87,6 @@ var ImgData = function (src, title) {
   } //closes function
 
   window.addEventListener("load", showImages);
-
-//function that builds the table that displays the results of the votes
-//   function displayResults() {
-//     for (var i = 0; i < imgObjects.length; i++) {
-//       var el = document.getElementById("results-container");
-//       var ul = document.createElement("ul");
-//       var list = document.createElement("li");
-//       list.innerText = imgObjects[i].title + "- " + imgObjects[i].imageTotalVotes;
-//       ul.appendChild(list);
-//       el.appendChild(ul);
-//     }
-// }
 
   var reloadCounter = 0;
 //function to reload the images after the user votes

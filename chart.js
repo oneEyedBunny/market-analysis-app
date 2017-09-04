@@ -5,8 +5,9 @@ function chartResults () {
 	var chart = new CanvasJS.Chart("results-container",
 	{
 		animationEnabled: true,
-		theme: "theme2",
+		theme: "theme3",
 		//exportEnabled: true,
+		backgroundColor: "#FFFFF0",
 		title:{
 			text: "Your Voting Results"
 		},
