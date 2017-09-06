@@ -13,7 +13,6 @@ var ImgData = function (src, title) {
   this.title = title;
   this.label= title;
   this.imageTotalVotes = 0;
-
   }
 
   //array of objects
@@ -41,11 +40,11 @@ var ImgData = function (src, title) {
     image.src = src; //ImgData.src;
     image.title = title;
     image.addEventListener("click", recordVote);
-    image.addEventListener("click", imageReload);
+    //image.addEventListener("click", imageReload);
     container.appendChild(image);
   }
 
-  //fucntion to randomly pic the image from the addImage array and ensure there are no duplicates
+  //fucntion to randomly pic the image from the imgObjects array and ensure there are no duplicates
   function showImages() {
     document.getElementById("image-container").innerHTML = "";
     var index1 = Math.floor(Math.random() * imgObjects.length)
@@ -63,8 +62,9 @@ var ImgData = function (src, title) {
     addImage(imgObjects[index3].src, imgObjects[index3].title);
   }
 
-  var x = 5;
-  //records the users vote
+  var x = 5; //sets the starting position for the rectangle
+
+  //Event listner that records the users vote
   function recordVote(event) {
     var clickedItemTitle = event.target.title; //this is the event object. target is a property within the event object and it gives info about what in HTML was clicked
     console.log(clickedItemTitle);
@@ -83,6 +83,7 @@ var ImgData = function (src, title) {
         index ++
       } //closes if/else
     }  while (clickedItemTitle != imageClicked.title && index < imgObjects.length);
+    imageReload();
     console.log(imageClicked.imageTotalVotes)
   } //closes function
 
@@ -104,3 +105,15 @@ var ImgData = function (src, title) {
     }
   }, 300); //timeout delay
 } //closes imageReoad()
+
+//function to reset reload counter and then clear all the prior visual results from the page
+  function voteAgain() {
+    reloadCounter = 0; //-1
+    document.getElementById("results-container").innerHTML = ""; //clears chart
+    document.getElementById("button").innerHTML = "";//clears button
+    // var rectangleLoc = document.getElementById("rectangle")
+    // Canvas.drawColor(color.BLACK);
+    //context.clearRect(0, 0, canvas.width, canvas.height);
+    //imageReload(); was replaced by showImages() below
+    showImages();
+  }
