@@ -18,7 +18,9 @@ function chartResults () {
 	// charttype.appendChild(input2);//need to set this to only load text once chart loads
 
 	for (i = 0; i < imgObjects.length; i++) {
-		imgObjects[i].y = imgObjects[i].imageTotalVotes;
+		var image = imgObjects[i];
+		image.y = image.imageTotalVotes;
+		delete image["x"];
 	}
 	// var sortedImages= imgObjects.sort(sortVotes);
 	 var chart = new CanvasJS.Chart("results-container",

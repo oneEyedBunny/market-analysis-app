@@ -94,7 +94,7 @@ var ImgData = function (src, title) {
   function imageReload () {
     document.getElementById("header-container")
     setTimeout (function (){
-      if (reloadCounter < 3) {
+      if (reloadCounter < 14) {
       showImages(); //this also has the addImage() in it, and that has the recordVote(), so all are being called with this one
       reloadCounter++;
       console.log("reload counter: " + reloadCounter);
@@ -111,9 +111,10 @@ var ImgData = function (src, title) {
     reloadCounter = 0; //-1
     document.getElementById("results-container").innerHTML = ""; //clears chart
     document.getElementById("button").innerHTML = "";//clears button
-    //var rectangleLoc = document.getElementById("rectangle")
-    //ctx.drawColor("black");
-    //context.clearRect(0, 0, canvas.width, canvas.height);
+    var rectangleLoc = document.getElementById("rectangle") //clears the rectangle on the next 3 lines
+    var ctx = rectangleLoc.getContext('2d')
+    ctx.clearRect(0, 0, rectangleLoc.width, rectangleLoc.height);
+    x = 5;
     //imageReload(); was replaced by showImages() below
     showImages();
   }
