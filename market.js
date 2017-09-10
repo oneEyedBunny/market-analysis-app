@@ -84,9 +84,19 @@ var ImgData = function (src, title) {
     }  while (clickedItemTitle != imageClicked.title && index < imgObjects.length);
     imageReload();
     console.log(imageClicked.imageTotalVotes)
+
+    localStorage.setItem("party", JSON.stringify(imgObjects));
+
   } //closes function
 
-  window.addEventListener("load", showImages);
+  function pageRefresh () {
+    if (localStorage.getItem("party") != null) {
+      imgObjects = JSON.parse(localStorage.getItem("party"))
+    }
+    showImages()
+  }
+
+  window.addEventListener("load", pageRefresh);
 
   var reloadCounter = 0;
 
