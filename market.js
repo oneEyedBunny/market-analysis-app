@@ -4,7 +4,6 @@ function drawRectangle(x) {
   ctx.fillStyle =  'rgba(0, 0, 200, 0.5)';
   ctx.fillRect(x, 5, 20, 120);
   ctx.stroke();
-  // ctx.fill(black);
 }
 
 //function that creates the object data
@@ -90,11 +89,12 @@ var ImgData = function (src, title) {
   window.addEventListener("load", showImages);
 
   var reloadCounter = 0;
+
 //function to reload the images after the user votes
   function imageReload () {
     document.getElementById("header-container")
     setTimeout (function (){
-      if (reloadCounter < 14) {
+      if (reloadCounter < 3) {
       showImages(); //this also has the addImage() in it, and that has the recordVote(), so all are being called with this one
       reloadCounter++;
       console.log("reload counter: " + reloadCounter);
@@ -111,8 +111,8 @@ var ImgData = function (src, title) {
     reloadCounter = 0; //-1
     document.getElementById("results-container").innerHTML = ""; //clears chart
     document.getElementById("button").innerHTML = "";//clears button
-    // var rectangleLoc = document.getElementById("rectangle")
-    // Canvas.drawColor(color.BLACK);
+    //var rectangleLoc = document.getElementById("rectangle")
+    //ctx.drawColor("black");
     //context.clearRect(0, 0, canvas.width, canvas.height);
     //imageReload(); was replaced by showImages() below
     showImages();
