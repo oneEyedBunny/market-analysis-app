@@ -66,6 +66,7 @@ var ImgData = function (src, title) {
   //Event listner that records the users vote
   function recordVote(event) {
     var clickedItemTitle = event.target.title; //this is the event object. target is a property within the event object and it gives info about what in HTML was clicked
+        //so in essence this is passing along the title of the item that was clicked
     console.log(clickedItemTitle);
     var index = 0;
         if(reloadCounter > 0){
@@ -109,7 +110,8 @@ var ImgData = function (src, title) {
       reloadCounter++;
       console.log("reload counter: " + reloadCounter);
     } else {
-      document.getElementById("image-container").innerHTML = "";
+      document.getElementById("image-container").innerHTML = "";  //.style.display = "none" or block to show it instead of innerHTML
+      //document.getElementById("image-container").innerHTML = "";
       document.getElementById("header-container").innerText = "Thanks for playing! Here are your results"
       chartResults();
     }
