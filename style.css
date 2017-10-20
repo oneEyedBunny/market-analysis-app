@@ -1,13 +1,54 @@
-h1 {
+@import "annimation.css";
+
+body {
+  background-color: #DC7633;
   text-align: center;
+  background-color: #f0e7df;
+  background-image: url("https://www.transparenttextures.com/patterns/black-thread-light.png");
+}
+
+h1 {
+  color: #1A5276;
+  text-shadow: 0 0 3px #FF0000;, 0 0 5px #0000FF;
+  font-size: 50px;
 }
 
 #image-container {
   display: flex;
   justify-content: space-around;
-  }
+}
 
 #image-container img {
   height: 250px;
-  border: solid gray;
+  box-shadow: 5px 7px 10px #D5D8DC;
+
+}
+
+ul li {
+  font-size: 20px;
+  font-weight: bold;
+  font-family: Garamond;
+  text-align: left;
+}
+
+#header-container {
+  font-size: 30px;
+  font-weight: bold;
+  font-family: Garamond;
+  color: #1A5276;
+}
+
+#rectangle {
+  border: solid #027C96;
+  border-width: 2px;
+  width: 410px;
+  height: 50px;
+  background-color: #027C96;
+}
+
+input[type=button] {
+  display: inline-block;
+  font-style: Garamond;
+  font-size: 20px;
+  background-color: #FF8C00;
 }
